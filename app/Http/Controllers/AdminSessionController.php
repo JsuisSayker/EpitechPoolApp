@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\ValidationException;
 
 class AdminSessionController extends Controller
 {
@@ -12,17 +12,26 @@ class AdminSessionController extends Controller
         return view('auth.login');
     }
 
-    public function store() {
+    public function store()
+    {
         $credentials = request()->validate([
             'email' => ['required', 'email'],
-            'password' => ['required'],
+            'password' => ['required']
         ]);
-        if (Auth::attempt($credentials)) {
-            session()->regenerate();
-            return redirect('/teams');
+
+        if (! Auth::attempt($credentials)) {
+            throw ValidationException::withMessages([
+                'email' => 'Sorry, those credentials do not match.'
+            ]);
         }
-        return back()->withErrors([
-            'username' => 'The provided credentials do not match our records.',
-        ]);
+
+        request()->session()->regenerate();
+
+        return redirect('/teams');
+    }
+
+    public function destroy() {
+        Auth::logout();
+        return redirect('/');
     }
 }

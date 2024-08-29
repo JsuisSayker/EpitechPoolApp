@@ -27,11 +27,22 @@
                                 <x-nav-link href="/points" :active="request()->is('/points')">Points</x-nav-link>
                                 <x-nav-link href="/collection" :active="request()->is('/collection')">Collection</x-nav-link>
                                 <x-nav-link href="/rules" :active="request()->is('/rules')">Rules</x-nav-link>
+                                {{-- <x-nav-link href="/jobs" :active="request()->is('jobs')">Jobs</x-nav-link>
+                                <x-nav-link href="/contact" :active="request()->is('contact')">Contact</x-nav-link> --}}
+                            </div>
+                        </div>
+                        <div class="hidden md:block">
+                            <div class="ml-4 flex items-center md:ml-6">
                                 @guest
                                     <x-nav-link href="/login" :active="request()->is('/login')">Log In</x-nav-link>
                                 @endguest
-                                {{-- <x-nav-link href="/jobs" :active="request()->is('jobs')">Jobs</x-nav-link>
-                                <x-nav-link href="/contact" :active="request()->is('contact')">Contact</x-nav-link> --}}
+
+                                @auth
+                                    <form method="POST" action="/logout">
+                                        @csrf
+
+                                        <x-form-button>Log Out</x-form-button>
+                                @endauth
                             </div>
                         </div>
                     </div>
