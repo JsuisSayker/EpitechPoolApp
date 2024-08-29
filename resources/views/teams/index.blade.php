@@ -2,7 +2,11 @@
     <x-slot:heading>
         Teams Page
     </x-slot:heading>
-    <x-button href="/points/create">Add Team</x-button>
+    <div class="flex mb-4">
+        <div class="grow">
+        </div>
+        <x-button href="/teams/create">Add Team</x-button>
+    </div>
     <div class="grid gap-6 lg:grid-cols-2 lg:gap-8">
         @foreach ($teams as $team)
             @php
