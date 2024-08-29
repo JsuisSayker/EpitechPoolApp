@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AdminSessionController extends Controller
 {
@@ -14,10 +14,9 @@ class AdminSessionController extends Controller
 
     public function store() {
         $credentials = request()->validate([
-            'username' => ['required'],
+            'email' => ['required', 'email'],
             'password' => ['required'],
         ]);
-
         if (Auth::attempt($credentials)) {
             session()->regenerate();
             return redirect('/teams');
