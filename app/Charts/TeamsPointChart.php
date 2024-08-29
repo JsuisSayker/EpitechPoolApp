@@ -3,7 +3,9 @@
 namespace App\Charts;
 
 use App\Models\Teams;
+use App\Models\Points;
 use ArielMejiaDev\LarapexCharts\LarapexChart;
+use PhpParser\Node\Expr\Cast\Array_;
 
 class TeamsPointChart
 {
@@ -17,13 +19,25 @@ class TeamsPointChart
     public function build()
     {
         $teams = Teams::all();
+        $points = Points::pluck("created_at")->toArray();
 
         $this->chart = $this->chart->lineChart()
-        ->setTitle('Teams Point Pool 2030 Promo')
-        ->setSubtitle('Physical sales vs Digital sales.')
-        ->setXAxis(['January', 'February', 'March', 'April', 'May', 'June', '']);
+            ->setTitle('Teams Point Pool 2030 Promo')
+            ->setSubtitle('Physical sales vs Digital sales.')
+            ->setXAxis($points);
         foreach ($teams as $team) {
-            $this->chart = $this->chart->addData($team->name, [1, 2, 1, 3, 1, 1, 1, 1]);
+            $team_point = $team->points()->get();
+            $tmp_array = array(count($points), 0);
+            $tmp_index = 0;
+            $last_value = $team_point[0]->point;
+            for ($i = 0; $i < count($points); $i++) {
+                if ($tmp_index < count($team_point) && $team_point[$tmp_index]->created_at == $points[$i]) {
+                    $last_value = $team_point[$tmp_index]->point;
+                    $tmp_index++;
+                }
+                $tmp_array[$i] = $last_value;
+            }
+            $this->chart = $this->chart->addData($team->name, $tmp_array);
         }
         return $this->chart;
     }
