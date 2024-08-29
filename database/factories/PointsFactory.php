@@ -19,7 +19,7 @@ class PointsFactory extends Factory
     {
         return [
             'teams_id' => Teams::all()->random()->id,
-            'point' => fake()->numberBetween(0, 10000),
+            'point' => fake()->numberBetween(-1000, 1000),
             'description' => fake()->sentence(),
             'created_at' => now()->subDays(rand(1, 100)),
         ];
