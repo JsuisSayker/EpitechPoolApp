@@ -14,3 +14,4 @@ Route::resource('rules', RulesController::class);
 Route::view('/collection', 'collection');
 
 Route::get("/login", [AdminSessionController::class, 'create']);
+Route::post("/login", [AdminSessionController::class, 'store']);

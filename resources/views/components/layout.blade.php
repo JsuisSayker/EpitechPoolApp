@@ -27,6 +27,9 @@
                                 <x-nav-link href="/points" :active="request()->is('/points')">Points</x-nav-link>
                                 <x-nav-link href="/collection" :active="request()->is('/collection')">Collection</x-nav-link>
                                 <x-nav-link href="/rules" :active="request()->is('/rules')">Rules</x-nav-link>
+                                @guest
+                                    <x-nav-link href="/login" :active="request()->is('/login')">Log In</x-nav-link>
+                                @endguest
                                 {{-- <x-nav-link href="/jobs" :active="request()->is('jobs')">Jobs</x-nav-link>
                                 <x-nav-link href="/contact" :active="request()->is('contact')">Contact</x-nav-link> --}}
                             </div>
