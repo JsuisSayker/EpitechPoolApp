@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Rules;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -22,5 +23,6 @@ class DatabaseSeeder extends Seeder
 
         $this->call(TeamsSeeder::class);
         $this->call(PointsSeeder::class);
+        $this->call(RulesSeeder::class);
     }
 }
