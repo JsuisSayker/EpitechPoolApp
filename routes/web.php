@@ -14,7 +14,7 @@ Route::resource('points', PointsController::class);
 Route::resource('rules', RulesController::class);
 Route::view('/collection', 'collection');
 
-Route::get("/login", [AdminSessionController::class, 'create']);
+Route::get("/login", [AdminSessionController::class, 'create'])->name('login');
 Route::post("/login", [AdminSessionController::class, 'store']);
 Route::post("/logout", [AdminSessionController::class, 'destroy']);
 

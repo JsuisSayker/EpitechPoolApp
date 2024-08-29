@@ -33,13 +33,15 @@
                 <div>date: {{ $points[$i]->created_at }}</div>
             </div>
             <div class="flex space-x-3 mx-1">
-                <x-button href="/points/{{ $points[$i]->id }}/edit">Edit</x-button>
-                <button form="delete-form" class="text-red-500 text-sm font-bold">Delete</button>
-            </div>
+                @auth
+                    <x-button href="/points/{{ $points[$i]->id }}/edit">Edit</x-button>
+                    <button form="delete-form" class="text-red-500 text-sm font-bold">Delete</button>
+                @endauth
+                </div>
         </div>
         <form method="POST" action="/points/{{ $points[$i]->id }}" id="delete-form" class="hidden">
             @csrf
-            @method('DELETE')
+            <!-- @method('DELETE') -->
         </form>
     @endfor
 

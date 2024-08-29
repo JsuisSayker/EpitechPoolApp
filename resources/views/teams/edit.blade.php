@@ -79,8 +79,10 @@
             </div>
         </div>
     </form>
-    <form method="POST" action="/teams/{{ $team->id }}" id="delete-form" class="hidden">
-        @csrf
-        @method('DELETE')
-    </form>
+    @auth
+        <form method="POST" action="/teams/{{ $team->id }}" id="delete-form" class="hidden">
+            @csrf
+            <!-- @method('DELETE') -->
+        </form>
+    @endauth
 </x-layout>

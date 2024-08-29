@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Teams;
 use App\Models\Points;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TeamsController extends Controller
 {
@@ -22,6 +23,10 @@ class TeamsController extends Controller
 
     public function create()
     {
+        if (Auth::guest()) {
+            return redirect('/login');
+        }
+
         return view('teams.create');
     }
 
@@ -45,12 +50,19 @@ class TeamsController extends Controller
 
     public function edit(Teams $team)
     {
+        if (Auth::guest()) {
+            return redirect('/login');
+        }
+
         return view('teams.edit', ['team' => $team]);
     }
 
     public function update(Teams $team)
     {
-        // authorize (On hold ...)
+        if (Auth::guest()) {
+            return redirect('/login');
+        }
+
         request()->validate([
             'name' => ['required', 'min:3']
         ]);
@@ -64,7 +76,9 @@ class TeamsController extends Controller
 
     public function destroy(Teams $team)
     {
-        // authorize (On hold ...)
+        if (Auth::guest()) {
+            return redirect('/login');
+        }
 
         $team->delete();
 
