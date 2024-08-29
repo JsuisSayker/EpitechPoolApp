@@ -33,7 +33,7 @@ class PointsController extends Controller
         ]);
 
         Points::create([
-            'teams_id' => request('team_id'),
+            'teams_id' => request('teams_id'),
             'point' => request('point'),
             'description' => request('description')
         ]);

@@ -14,7 +14,7 @@
 
             <div>Actual Balance Point : {{ $actualBalance }}</div>
         </div>
-        <x-button href="/points/create?{{$team->id}}">Add Point</x-button>
+        <x-button href="/points/create?teams_id={{$team->id}}">Add Point</x-button>
         <x-button href="/teams/{{ $team->id }}/edit">Edit Team</x-button>
     </div>
     <div>Changelog</div>
