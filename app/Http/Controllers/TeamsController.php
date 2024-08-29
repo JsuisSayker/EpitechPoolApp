@@ -26,18 +26,16 @@ class TeamsController extends Controller
 
     public function show(Teams $team)
     {
-        return view('teams.show', ['team' => $team]);
+        return view('teams.show', ['team' => $team, 'points' => $team->points()->get()]);
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'name' => ['required', 'min:3'],
-            'point' => ['required']
+            'name' => ['required', 'min:3']
         ]);
         Teams::create([
-            'name' => request('name'),
-            'point' => request('point')
+            'name' => request('name')
         ]);
 
         return redirect('/teams');
@@ -52,14 +50,12 @@ class TeamsController extends Controller
     {
         // authorize (On hold ...)
         request()->validate([
-            'name' => ['required', 'min:3'],
-            'point' => ['required']
+            'name' => ['required', 'min:3']
         ]);
 
 
         $team->update([
-            'name' => request('name'),
-            'point' => request('point')
+            'name' => request('name')
         ]);
 
         return redirect("/teams/{$team->id}");
