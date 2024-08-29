@@ -14,8 +14,10 @@
 
             <div>Actual Balance Point : {{ $actualBalance }}</div>
         </div>
-        <x-button href="/points/create?{{$team->id}}">Add Point</x-button>
-        <x-button href="/teams/{{ $team->id }}/edit">Edit Team</x-button>
+            @auth
+                <x-button href="/points/create?{{$team->id}}">Add Point</x-button>
+                <x-button href="/teams/{{ $team->id }}/edit">Edit Team</x-button>
+            @endauth
     </div>
     <div>Changelog</div>
     @for ($i = 1; $i < count($points); $i += 1)
