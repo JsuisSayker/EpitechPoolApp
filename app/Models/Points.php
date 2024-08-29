@@ -10,7 +10,7 @@ class Points extends Model
     use HasFactory;
 
     protected $table = 'points';
-    protected $fillable = ['teams_id', 'point', 'description'];
+    protected $fillable = ['teams', 'point', 'description'];
 
     public function teams()
     {

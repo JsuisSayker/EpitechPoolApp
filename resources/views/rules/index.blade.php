@@ -4,7 +4,6 @@
     </x-slot:heading>
     @foreach ($rules as $rule)
         <div>
-
             {{ $rule['description'] }}
         </div>
     @endforeach
