@@ -37,6 +37,10 @@ class TeamsController extends Controller
 
     public function store(Request $request)
     {
+        if (Auth::guest()) {
+            return redirect('/login');
+        }
+
         $request->validate([
             'name' => ['required', 'min:3']
         ]);
