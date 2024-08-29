@@ -1,6 +1,6 @@
 <x-layout>
     <x-slot:heading>
-        Graphic Page
+        Points Page
     </x-slot:heading>
     <div class="p-6 bg-white rounded shadow">
         {!! $chart->container() !!}
