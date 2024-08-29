@@ -24,18 +24,40 @@
                         </div>
                     </div>
 
-                    <div class="sm:col-span-4">
-                        <label for="point" class="block text-sm font-medium leading-6 text-gray-900">Point</label>
-                        <div class="mt-2">
-                            <div
-                                class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
-                                <input type="text" name="point" id="point"
-                                    class="block flex-1 border-0 bg-transparent py-1.5 px-3 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                                    placeholder="$50,000 per Year"value="{{ $team->point }}" required>
+                    <div class="sm:col-span-4">Points</div>
+                    <div class="sm:col-span-4 py-4 px-4 rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
+                        <div class="sm:col-span-4">
+                            <label for="point"
+                                class="block text-sm font-medium leading-6 text-gray-900">Balance</label>
+                            <div class="mt-2">
+                                <div
+                                    class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
+                                    <input type="text" name="point" id="point"
+                                        class="block flex-1 border-0 bg-transparent py-1.5 px-3 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                                        placeholder="500 (point)" value="{{ $team->points()->get()->last()->point }}"
+                                        required>
+                                </div>
+                                @error('point')
+                                    <p class="text-xs text-red-500 font-semibold mt-1">{{ $message }}</p>
+                                @enderror
                             </div>
-                            @error('point')
-                                <p class="text-xs text-red-500 font-semibold mt-1">{{ $message }}</p>
-                            @enderror
+                        </div>
+                        <br>
+
+                        <div class="sm:col-span-4">
+                            <label for="description"
+                                class="block text-sm font-medium leading-6 text-gray-900">Description</label>
+                            <div class="mt-2">
+                                <div
+                                    class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
+                                    <input type="text" name="description" id="description"
+                                        class="block flex-1 border-0 bg-transparent py-1.5 px-3 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                                        placeholder="description message needed if you change point balance">
+                                </div>
+                                @error('description')
+                                    <p class="text-xs text-red-500 font-semibold mt-1">{{ $message }}</p>
+                                @enderror
+                            </div>
                         </div>
                     </div>
 

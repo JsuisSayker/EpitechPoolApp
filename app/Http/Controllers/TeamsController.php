@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Teams;
+use App\Models\Points;
 use Illuminate\Http\Request;
-use Pest\Support\Arr;
-use PhpParser\Node\Expr\Cast\Array_;
 
 class TeamsController extends Controller
 {
@@ -36,6 +35,7 @@ class TeamsController extends Controller
         $request->validate([
             'name' => ['required', 'min:3']
         ]);
+
         Teams::create([
             'name' => request('name')
         ]);
@@ -52,13 +52,25 @@ class TeamsController extends Controller
     {
         // authorize (On hold ...)
         request()->validate([
-            'name' => ['required', 'min:3']
+            'name' => ['required', 'min:3'],
+            'point' => ['required']
         ]);
-
 
         $team->update([
             'name' => request('name')
         ]);
+
+        if (request('point') != $team->points()->get()->last()->point) {
+            request()->validate([
+                'point' => ['required'],
+                'description' => ['required']
+            ]);
+            Points::create([
+                'teams_id' => $team->id,
+                'point' => request('point'),
+                'description' => request('description')
+            ]);
+        }
 
         return redirect("/teams/{$team->id}");
     }
