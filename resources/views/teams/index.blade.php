@@ -2,6 +2,7 @@
     <x-slot:heading>
         Teams Page
     </x-slot:heading>
+    <x-button href="/points/create">Add Team</x-button>
     <div class="grid gap-6 lg:grid-cols-2 lg:gap-8">
         @foreach ($teams as $team)
             <x-team-widget href="/teams/{{ $team['id'] }}">

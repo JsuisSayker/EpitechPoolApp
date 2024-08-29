@@ -16,9 +16,12 @@ class PointsController extends Controller
         return view('points.index', ['chart' => $chart->build()]);
     }
 
-    public function create(): View
+    public function create(Request $request): View
     {
-        return view('points.create');
+        $request->validate([
+            'teams_id' => ['required']
+        ]);
+        return view('points.create', ['teams_id' => request('teams_id')]);
     }
 
     public function store(Request $request): RedirectResponse

@@ -22,8 +22,8 @@ class TeamsPointChart
         $points = Points::pluck("created_at")->toArray();
 
         $this->chart = $this->chart->lineChart()
-            ->setTitle('Teams Point Pool 2030 Promo')
-            ->setSubtitle('Physical sales vs Digital sales.')
+            ->setTitle('Teams Points')
+            ->setSubtitle('Pool 2030 Promo')
             ->setXAxis($points);
         foreach ($teams as $team) {
             $team_point = $team->points()->get();
