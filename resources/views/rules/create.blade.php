@@ -21,7 +21,7 @@
                                     placeholder="Shift Leader" required>
                             </div>
                             @error('name')
-                                <p class="text-xs text-red-500 font-semibold mt-1">{{$message}}</p>
+                                <p class="text-xs text-red-500 font-semibold mt-1">{{ $message }}</p>
                             @enderror
                         </div>
                     </div>
@@ -36,7 +36,7 @@
                                     placeholder="$50,000 per Year" required>
                             </div>
                             @error('point')
-                                <p class="text-xs text-red-500 font-semibold mt-1">{{$message}}</p>
+                                <p class="text-xs text-red-500 font-semibold mt-1">{{ $message }}</p>
                             @enderror
                         </div>
                     </div>
