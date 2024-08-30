@@ -59,6 +59,11 @@ it('can access creation page of a team', function () {
         'email' => env('ADMIN_EMAIL'),
     ]);
 
+    $this->assertDatabaseHas('users', [
+        'name' => 'Test User',
+        'email' => env('ADMIN_EMAIL')
+    ]);
+
     // login
     $response = $this->post('/login', [
         'email' => env('ADMIN_EMAIL', 'test@example.com'),
@@ -72,27 +77,38 @@ it('can access creation page of a team', function () {
 });
 
 // // SHOW
-// it('can access one team page', function () {
-//     // create a user
-//     User::factory()->create([
-//         'name' => 'Test User',
-//         'email' => env('ADMIN_EMAIL'),
-//     ]);
+it('can access one team page', function () {
+    // not logged in
 
-//     // login
-//     $response = $this->post('/login', [
-//         'email' => env('ADMIN_EMAIL', 'test@example.com'),
-//         'password' => env('ADMIN_PASSWORD', 'password'),
-//     ]);
-//     $response->assertStatus(302);
-//     $this->assertAuthenticated();
+    // create a user
+    User::factory()->create([
+        'name' => 'Test User',
+        'email' => env('ADMIN_EMAIL'),
+    ]);
 
-//     // logged in
-//     $team =  Teams::factory()->create();
+    $this->assertDatabaseHas('users', [
+        'name' => 'Test User',
+        'email' => env('ADMIN_EMAIL')
+    ]);
 
-//     $this->get('/teams/' . $team->id)
-//         ->assertStatus(200);
-// });
+    // login
+    $response = $this->post('/login', [
+        'email' => env('ADMIN_EMAIL', 'test@example.com'),
+        'password' => env('ADMIN_PASSWORD', 'password'),
+    ]);
+    $response->assertStatus(302);
+    $this->assertAuthenticated();
+
+    // logged in
+    $team =  Teams::factory()->create();
+
+    $this->assertDatabaseHas('teams', [
+        'id' => $team->id,
+        'name' => $team->name
+    ]);
+
+    $this->get('/teams/' . $team->id)->assertStatus(200);
+});
 
 // DELETE
 it('can delete a team', function () {

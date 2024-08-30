@@ -5,12 +5,12 @@
     <h1 class="font-bold text-lg dark:text-gray-300">{{ $team->name }}</h1>
 
     @php
-        $totalBalance = $points[0]->point;
+        $totalBalance = $points->first()->point ?? 0;
         $actualBalance = array_sum($points->pluck('point')->toArray());
     @endphp
     <div class="flex space-x-2 dark:text-gray-300">
         <div class="grow flex space-x-2">
-            <div>Default Balance Point : {{ $points[0]->point }}</div>
+            <div>Default Balance Point : {{ $points->first()->point ?? 'N/A' }}</div>
 
             <div>Actual Balance Point : {{ $actualBalance }}</div>
         </div>
