@@ -11,7 +11,7 @@ use App\Http\Controllers\FileUploadController;
 Route::view('/', 'home');
 // Route::resource('teams', TeamsController::class);
 Route::get('/teams', [TeamsController::class, 'index']);
-Route::get('/teams/create', [TeamsController::class, 'create']);
+Route::get('/teams/create', [TeamsController::class, 'create'])->middleware('auth');
 Route::get('/teams/{team}', [TeamsController::class, 'show']);
 Route::post('/teams', [TeamsController::class, 'store'])->middleware('auth');
 Route::get('/teams/{team}/edit', [TeamsController::class, 'edit'])->middleware('auth');
