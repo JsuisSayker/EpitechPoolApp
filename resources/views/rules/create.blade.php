@@ -3,7 +3,7 @@
         Create Team
     </x-slot:heading>
 
-    <form method="POST" action="/teams">
+    <form method="POST" action="/rules">
         @csrf
         <div class="space-y-12">
             <div class="border-b border-gray-900/10 pb-12">
