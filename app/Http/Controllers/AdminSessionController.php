@@ -31,6 +31,10 @@ class AdminSessionController extends Controller
     }
 
     public function destroy() {
+        if (Auth::guest()) {
+            return redirect('/login');
+        }
+
         Auth::logout();
         return redirect('/');
     }

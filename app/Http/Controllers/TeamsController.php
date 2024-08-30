@@ -23,9 +23,9 @@ class TeamsController extends Controller
 
     public function create()
     {
-        if (Auth::guest()) {
-            return redirect('/login');
-        }
+        // if (Auth::guest()) {
+        //     return redirect('/login');
+        // }
 
         return view('teams.create');
     }
@@ -37,9 +37,9 @@ class TeamsController extends Controller
 
     public function store(Request $request)
     {
-        if (Auth::guest()) {
-            return redirect('/login');
-        }
+        // if (Auth::guest()) {
+        //     return redirect('/login');
+        // }
 
         $request->validate([
             'name' => ['required', 'min:3']
@@ -54,18 +54,18 @@ class TeamsController extends Controller
 
     public function edit(Teams $team)
     {
-        if (Auth::guest()) {
-            return redirect('/login');
-        }
+        // if (Auth::guest()) {
+        //     return redirect('/login');
+        // }
 
         return view('teams.edit', ['team' => $team]);
     }
 
     public function update(Teams $team)
     {
-        if (Auth::guest()) {
-            return redirect('/login');
-        }
+        // if (Auth::guest()) {
+        //     return redirect('/login');
+        // }
 
         request()->validate([
             'name' => ['required', 'min:3']
@@ -80,9 +80,9 @@ class TeamsController extends Controller
 
     public function destroy(Teams $team)
     {
-        if (Auth::guest()) {
-            return redirect('/login');
-        }
+        // if (Auth::guest()) {
+        //     return redirect('/login');
+        // }
 
         $team->delete();
 
