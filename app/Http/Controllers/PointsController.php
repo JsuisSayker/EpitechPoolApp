@@ -68,10 +68,4 @@ class PointsController extends Controller
 
         return redirect("/teams");
     }
-
-    public function addAllPointNTime(Points $points, Int $point): Int
-    {
-        $points->point += $point;
-        return 1;
-    }
 }

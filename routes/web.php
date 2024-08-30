@@ -33,5 +33,5 @@ Route::get("/login", [AdminSessionController::class, 'create'])->name('login');
 Route::post("/login", [AdminSessionController::class, 'store']);
 Route::post("/logout", [AdminSessionController::class, 'destroy']);
 
-Route::get('upload-ui', [FileUploadController::class, 'dropzoneUi' ]);
-Route::post('file-upload', [FileUploadController::class, 'dropzoneFileUpload' ])->name('dropzoneFileUpload');
+Route::get('upload-ui', [FileUploadController::class, 'uploadUi' ]);
+Route::post('file-upload', [FileUploadController::class, 'FileUpload' ])->name('FileUpload');
