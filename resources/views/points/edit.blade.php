@@ -17,12 +17,11 @@
                             <label for="point"
                                 class="block text-sm font-medium leading-6 text-gray-900">Balance</label>
                             <div class="mt-2">
-                                <div
-                                    class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
+                                <x-form-text-box>
                                     <input type="text" name="point" id="point"
                                         class="block flex-1 border-0 bg-transparent py-1.5 px-3 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                                         placeholder="500 (point)" value="{{ $point->point }}" required>
-                                </div>
+                                </x-form-text-box>
                                 @error('point')
                                     <p class="text-xs text-red-500 font-semibold mt-1">{{ $message }}</p>
                                 @enderror
@@ -34,13 +33,12 @@
                             <label for="description"
                                 class="block text-sm font-medium leading-6 text-gray-900">Description</label>
                             <div class="mt-2">
-                                <div
-                                    class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
+                                <x-form-text-box>
                                     <input type="text" name="description" id="description"
                                         class="block flex-1 border-0 bg-transparent py-1.5 px-3 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                                         placeholder="description message needed if you change point balance"
                                         value="{{ $point->description }}" required>
-                                </div>
+                                </x-form-text-box>
                                 @error('description')
                                     <p class="text-xs text-red-500 font-semibold mt-1">{{ $message }}</p>
                                 @enderror
@@ -52,9 +50,8 @@
         </div>
 
         <div class="mt-6 flex items-center justify-between gap-x-6">
-            <div class="flex items-center">
-                <button form="delete-form" class="text-red-500 text-sm font-bold">Delete</button>
-            </div>
+            <x-delete-button></x-delete-button>
+
             <div class="flex items-center gap-x-6">
                 <a href="/teams/{{ $point->teams_id }}" class="text-sm font-semibold leading-6 text-gray-900">Cancel</a>
                 <div>
