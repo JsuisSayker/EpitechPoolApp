@@ -37,4 +37,30 @@
         @endforeach
     </div>
 
+
+    <style>
+        .overlay_4 {
+            left: 0;
+            bottom: 100%;
+            height: 0;
+            width: 100%;
+            overflow: hidden;
+            backdrop-filter: blur(8px) brightness(80%);
+            transition: all .3s ease-in-out;
+        }
+
+        .image_wrapper:hover .overlay_4 {
+            bottom: 0;
+            height: 100%;
+        }
+    </style>
+
+    <li class="image_wrapper">
+        <img src="/images/background.jpg" alt="" />
+        <div class="overlay overlay_4">
+            <h3 class="text-">Image title</h3>
+        </div>
+    </li>
+
+
 </x-layout>

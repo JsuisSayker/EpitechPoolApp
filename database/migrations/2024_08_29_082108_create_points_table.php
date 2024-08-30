@@ -15,7 +15,7 @@ return new class extends Migration
         Schema::create('points', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->foreignIdFor(Teams::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(Teams::class);
             $table->string('point');
             $table->string('description');
         });
