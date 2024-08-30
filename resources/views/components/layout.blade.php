@@ -9,7 +9,7 @@
 </head>
 
 <body class="h-full">
-    <div class="min-h-full bg-white shadow dark:bg-gray-500">
+    <div class="min-h-full bg-white shadow dark:bg-gray-500 bg">
         <nav class="bg-gray-800">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div class="flex h-16 items-center justify-between">
@@ -74,5 +74,25 @@
     </div>
 
 </body>
+
+<style>
+    body,
+    html {
+        height: 100%;
+    }
+
+    .bg {
+        /* The image used */
+        background-image: url("/images/background.jpg");
+
+        /* Full height */
+        height: 100%;
+
+        /* Center and scale the image nicely */
+        background-position: center;
+        background-repeat: repeat;
+        background-size: cover;
+    }
+</style>
 
 </html>
