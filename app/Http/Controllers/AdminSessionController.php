@@ -2,17 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 
 class AdminSessionController extends Controller
 {
-    public function create()
+    public function create(): View
     {
         return view('auth.login');
     }
 
-    public function store()
+    public function store(): RedirectResponse
     {
         $credentials = request()->validate([
             'email' => ['required', 'email'],
@@ -30,7 +32,8 @@ class AdminSessionController extends Controller
         return redirect('/teams');
     }
 
-    public function destroy() {
+    public function destroy(): RedirectResponse
+    {
         if (Auth::guest()) {
             return redirect('/login');
         }

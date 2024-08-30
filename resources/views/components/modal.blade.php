@@ -1,4 +1,4 @@
-@props(['modal_tag' ])
+@props(['modal_tag'])
 
 <!-- The Modal -->
 <div id="myModal" class="modal">
@@ -47,12 +47,11 @@
     #caption {
         margin: auto;
         display: block;
-        width: 80%;
-        max-width: 700px;
+        width: auto;
         text-align: center;
         color: #ccc;
         padding: 10px 0;
-        height: 150px;
+        height: 100%;
     }
 
     /* Add Animation - Zoom in the Modal */
@@ -118,5 +117,12 @@
     // When the user clicks on <span> (x), close the modal
     span.onclick = function() {
         modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
     }
 </script>

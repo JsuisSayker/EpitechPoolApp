@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Teams;
-use App\Models\Points;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class TeamsController extends Controller
 {
-    public function index()
+    public function index(): View
     {
         $teams = Teams::all();
 
@@ -21,7 +21,7 @@ class TeamsController extends Controller
         );
     }
 
-    public function create()
+    public function create(): View
     {
         // if (Auth::guest()) {
         //     return redirect('/login');
@@ -30,12 +30,15 @@ class TeamsController extends Controller
         return view('teams.create');
     }
 
-    public function show(Teams $team)
+    public function show(Teams $team): View
     {
-        return view('teams.show', ['team' => $team, 'points' => $team->points()->get()]);
+        return view('teams.show', [
+            'team' => $team,
+            'points' => $team->points()->get()
+        ]);
     }
 
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         // if (Auth::guest()) {
         //     return redirect('/login');
@@ -52,7 +55,7 @@ class TeamsController extends Controller
         return redirect('/teams');
     }
 
-    public function edit(Teams $team)
+    public function edit(Teams $team): View
     {
         // if (Auth::guest()) {
         //     return redirect('/login');
@@ -61,7 +64,7 @@ class TeamsController extends Controller
         return view('teams.edit', ['team' => $team]);
     }
 
-    public function update(Teams $team)
+    public function update(Teams $team): RedirectResponse
     {
         // if (Auth::guest()) {
         //     return redirect('/login');
@@ -78,7 +81,7 @@ class TeamsController extends Controller
         return redirect("/teams/{$team->id}");
     }
 
-    public function destroy(Teams $team)
+    public function destroy(Teams $team): RedirectResponse
     {
         // if (Auth::guest()) {
         //     return redirect('/login');

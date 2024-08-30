@@ -14,7 +14,7 @@
             @php
                 $actualBalance = array_sum($team->points()->get()->pluck('point')->toArray());
             @endphp
-            <x-team-widget href="/teams/{{ $team->id }}">
+            <x-team-widget href="/teams/{{ $team->id }}" background_image="/images/cards/rare/Quentin.png">
                 <strong>{{ $team->name }}</strong> <br>
                 <p>points: {{ $actualBalance }}</p>
             </x-team-widget>
