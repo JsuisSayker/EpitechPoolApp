@@ -1,46 +1,29 @@
 <x-layout>
     <x-slot:heading>
-        Create Team
+        Create New Rule
     </x-slot:heading>
 
     <form method="POST" action="/rules">
         @csrf
         <div class="space-y-12">
-            <div class="border-b border-gray-900/10 pb-12">
-                <h2 class="text-base font-semibold leading-7 text-gray-900">Create a New Team</h2>
-                <p class="mt-1 text-sm leading-6 text-gray-600">We just need a handful of details from you.</p>
+            <div class="border-b border-gray-900/10 pb-12 dark:border-gray-300">
+                <h2 class="text-base font-semibold leading-7 text-gray-900">Create a New Rule</h2>
+                <p class="mt-1 text-sm leading-6 text-gray-600">Enter the description of your new rule.</p>
 
-                <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                <div class="mt-5 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                     <div class="sm:col-span-4">
-                        <label for="name" class="block text-sm font-medium leading-6 text-gray-900">Name</label>
+                        <x-form-label for="description" class="block text-sm font-medium leading-6 text-gray-900">
+                            Description</x-form-label>
+                        {{-- <label for="name" class="block text-sm font-medium leading-6 text-gray-900">Description</label> --}}
                         <div class="mt-2">
-                            <div
-                                class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
-                                <input type="text" name="name" id="name"
-                                    class="block flex-1 border-0 bg-transparent py-1.5 px-3 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                                    placeholder="Shift Leader" required>
-                            </div>
-                            @error('name')
+                            <x-form-input type="text" name="description" id="description"
+                                class="block flex-1 border-0 bg-transparent py-1.5 px-3 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                                placeholder="Explain your pool code to gain 100 points" required />
+                            @error('description')
                                 <p class="text-xs text-red-500 font-semibold mt-1">{{ $message }}</p>
                             @enderror
                         </div>
                     </div>
-
-                    <div class="sm:col-span-4">
-                        <label for="point" class="block text-sm font-medium leading-6 text-gray-900">Point</label>
-                        <div class="mt-2">
-                            <div
-                                class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
-                                <input type="text" name="point" id="point"
-                                    class="block flex-1 border-0 bg-transparent py-1.5 px-3 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                                    placeholder="$50,000 per Year" required>
-                            </div>
-                            @error('point')
-                                <p class="text-xs text-red-500 font-semibold mt-1">{{ $message }}</p>
-                            @enderror
-                        </div>
-                    </div>
-
                 </div>
             </div>
         </div>
