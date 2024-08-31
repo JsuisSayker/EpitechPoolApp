@@ -26,7 +26,16 @@ Route::post('/points/{point}', [PointsController::class, 'update'])->middleware(
 Route::delete('/points/{point}', [PointsController::class, 'destroy'])->middleware('auth');
 
 // Route::resource('points', PointsController::class);
-Route::resource('rules', RulesController::class);
+// Route::resource('rules', RulesController::class);
+Route::get('/rules', [RulesController::class, 'index']);
+Route::get('/rules/create', [RulesController::class, 'create'])->middleware('auth');
+Route::get('/rules/{rules}', [RulesController::class, 'show']);
+Route::post('/rules', [RulesController::class, 'store'])->middleware('auth');
+Route::get('/rules/{rules}/edit', [RulesController::class, 'edit'])->middleware('auth');
+Route::post('/rules/{rules}', [RulesController::class, 'update'])->middleware('auth');
+Route::delete('/rules/{rules}', [RulesController::class, 'destroy'])->middleware('auth');
+
+
 Route::view('/collection', 'collection');
 
 Route::get("/login", [AdminSessionController::class, 'create'])->name('login');

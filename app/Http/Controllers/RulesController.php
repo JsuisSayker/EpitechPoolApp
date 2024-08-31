@@ -52,17 +52,15 @@ class RulesController extends Controller
     {
         // authorize (On hold ...)
         request()->validate([
-            'name' => ['required', 'min:3'],
-            'point' => ['required']
+            'description' => ['required', 'min:3']
         ]);
 
 
         $rules->update([
-            'name' => request('name'),
-            'point' => request('point')
+            'description' => request('description')
         ]);
 
-        return redirect("/rules/{$rules->id}");
+        return redirect("/rules");
     }
 
     public function destroy(Rules $rules)
