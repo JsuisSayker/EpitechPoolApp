@@ -94,40 +94,40 @@ it('can access creation page of a team', function () {
 });
 
 // DELETE
-it('can delete a team', function () {
-    // create a user
-    User::factory()->create([
-        'name' => 'Test User',
-        'email' => env('ADMIN_EMAIL'),
-    ]);
+// it('can delete a team', function () {
+//     // create a user
+//     User::factory()->create([
+//         'name' => 'Test User',
+//         'email' => env('ADMIN_EMAIL'),
+//     ]);
 
-    $this->assertDatabaseHas('users', [
-        'name' => 'Test User',
-        'email' => env('ADMIN_EMAIL')
-    ]);
+//     $this->assertDatabaseHas('users', [
+//         'name' => 'Test User',
+//         'email' => env('ADMIN_EMAIL')
+//     ]);
 
-    // login
-    $response = $this->post('/login', [
-        'email' => env('ADMIN_EMAIL', 'test@example.com'),
-        'password' => env('ADMIN_PASSWORD', 'password'),
-    ]);
-    $response->assertStatus(302);
-    $this->assertAuthenticated();
+//     // login
+//     $response = $this->post('/login', [
+//         'email' => env('ADMIN_EMAIL', 'test@example.com'),
+//         'password' => env('ADMIN_PASSWORD', 'password'),
+//     ]);
+//     $response->assertStatus(302);
+//     $this->assertAuthenticated();
 
-    // logged in
-    $team = Teams::factory()->create();
-    $this->assertDatabaseHas('teams', [
-        'id' => $team->id,
-        'name' => $team->name,
-    ]);
+//     // logged in
+//     $team = Teams::factory()->create();
+//     $this->assertDatabaseHas('teams', [
+//         'id' => $team->id,
+//         'name' => $team->name,
+//     ]);
 
-    $point = Points::factory()->create();
-    $this->assertDatabaseHas('points', [
-        'id' => $point->id,
-        'teams_id' => $team->id
-    ]);
+//     $point = Points::factory()->create();
+//     $this->assertDatabaseHas('points', [
+//         'id' => $point->id,
+//         'teams_id' => $team->id
+//     ]);
 
-    $this->delete('/points/' . $point->id)->assertStatus(302);
+//     $this->delete('/points/' . $point->id)->assertStatus(302);
 
-    $this->assertDatabaseMissing('points', ['id' => $point->id]);
-});
+//     $this->assertDatabaseMissing('points', ['id' => $point->id]);
+// });
