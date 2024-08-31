@@ -17,8 +17,8 @@
             <div class="flex gap-3 mr-1">
                 @auth
                     <x-button href="/rules/{{ $rule->id }}/edit">Edit</x-button>
-                    <x-delete-button :form_name="'delete-rule-form'"></x-delete-button>
-                    <form method="POST" action="/rules/{{ $rule->id }}" id="delete-rule-form" class="hidden">
+                    <x-delete-button form_name="delete-rule-form-{{ $rule->id }}"></x-delete-button>
+                    <form method="POST" action="/rules/{{ $rule->id }}" id='delete-rule-form-{{ $rule->id }}' class="hidden">
                         @csrf
                         @method('DELETE')
                     </form>
