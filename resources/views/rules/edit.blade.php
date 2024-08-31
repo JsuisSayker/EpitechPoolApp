@@ -7,25 +7,27 @@
         @csrf
         <!-- @method('PATCH') -->
         <div class="space-y-12">
-            <div class="border-b border-gray-900/10 pb-12">
-                <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-                    <div class="sm:col-span-4">
-                        <label for="description"
-                            class="block text-sm font-medium leading-6 text-gray-900">New Description</label>
+            <div class="border-b border-gray-900/10 pb-12 dark:border-gray-300">
+                <div class="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6 ">
+                    <x-form-field>
+                        <x-form-label for="description" class="block text-sm font-medium leading-6 text-gray-900">New
+                            Description</x-form-label>
+                        <div class="sm:col-span-4">
+                    </x-form-field>
+                    <x-form-field>
                         <div class="mt-2">
-                            <x-form-text-box>
-                                <input type="text" name="description" id="description"
-                                    class="block flex-1 border-0 bg-transparent py-1.5 px-3 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                                    placeholder="description message needed if you change point balance"
-                                    value="{{ $rules->description }}" required>
-                            </x-form-text-box>
+                            <x-form-input type="text" name="description" id="description"
+                                class="block flex-1 border-0 bg-transparent py-1.5 px-3 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                                placeholder="description message needed if you change point balance"
+                                value="{{ $rules->description }}" required />
                             @error('description')
                                 <p class="text-xs text-red-500 font-semibold mt-1">{{ $message }}</p>
                             @enderror
                         </div>
-                    </div>
+                    </x-form-field>
                 </div>
             </div>
+        </div>
         </div>
 
 
