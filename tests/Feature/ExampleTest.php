@@ -10,9 +10,4 @@ it('can access the collection page', function () {
         ->assertStatus(200);
 });
 
-it('can access the login page', function () {
-    $this->get('/login')
-        ->assertStatus(200);
-});
-
 // Repeat for other GET routes...

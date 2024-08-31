@@ -32,12 +32,10 @@ class RulesController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => ['required', 'min:3'],
-            'point' => ['required']
+            'description' => ['required', 'min:3'],
         ]);
         Rules::create([
-            'name' => request('name'),
-            'point' => request('point')
+            'description' => request('description')
         ]);
 
         return redirect('/rules');

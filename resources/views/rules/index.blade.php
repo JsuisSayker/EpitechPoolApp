@@ -11,10 +11,10 @@
     </div>
     @foreach ($rules as $rule)
         <x-text-widget>
-            <div class="flex grow m-2 space-x-2">
+            <div class="flex grow my-auto gap-4 ml-1">
                 {{ $rule->description }}
             </div>
-            <div class="flex space-x-3 mx-1">
+            <div class="flex gap-3 mr-1">
                 @auth
                     <x-button href="/rules/{{ $rule->id }}/edit">Edit</x-button>
                     <x-delete-button :form_name="'delete-points-form'"></x-delete-button>
