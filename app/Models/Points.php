@@ -12,7 +12,7 @@ class Points extends Model
     protected $table = 'points';
     protected $fillable = ['teams_id', 'point', 'description'];
 
-    public function teams_id()
+    public function teams()
     {
         return $this->belongsTo(Teams::class);
     }

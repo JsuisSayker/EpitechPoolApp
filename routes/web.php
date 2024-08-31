@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\GraphicController;
 use App\Http\Controllers\PointsController;
 use App\Http\Controllers\TeamsController;
 use App\Http\Controllers\RulesController;
