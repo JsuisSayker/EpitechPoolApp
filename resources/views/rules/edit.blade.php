@@ -32,7 +32,7 @@
 
 
         <div class="mt-6 flex items-center justify-between gap-x-6">
-            <x-delete-button></x-delete-button>
+            <x-delete-button form_name="delete-form"></x-delete-button>
             <div class="flex items-center gap-x-6">
                 <a href="/rules" class="text-sm font-semibold leading-6 text-gray-900">Cancel</a>
                 <div>

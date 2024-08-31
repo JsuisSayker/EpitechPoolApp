@@ -67,9 +67,7 @@
 
 
         <div class="mt-6 flex items-center justify-between gap-x-6">
-            <div class="flex items-center">
-                <button form="delete-form" class="text-red-500 text-sm font-bold">Delete</button>
-            </div>
+            <x-delete-button form_name="delete-form"></x-delete-button>
             <div class="flex items-center gap-x-6">
                 <a href="/teams/{{ $team->id }}" class="text-sm font-semibold leading-6 text-gray-900">Cancel</a>
                 <div>
@@ -82,7 +80,7 @@
     @auth
         <form method="POST" action="/teams/{{ $team->id }}" id="delete-form" class="hidden">
             @csrf
-            <!-- @method('DELETE') -->
+            @method('DELETE')
         </form>
     @endauth
 </x-layout>
