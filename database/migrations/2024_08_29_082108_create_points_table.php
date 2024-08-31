@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->foreignIdFor(Teams::class);
-            $table->string('point');
+            $table->integer('point');
             $table->string('description');
         });
     }

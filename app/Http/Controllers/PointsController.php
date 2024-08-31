@@ -7,6 +7,7 @@ use App\Charts\TeamsPointChart;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class PointsController extends Controller
 {
@@ -18,7 +19,7 @@ class PointsController extends Controller
     public function create(Request $request): View
     {
         $request->validate([
-            'teams_id' => ['required']
+            'teams_id' => ['required', 'exists:teams,id']
         ]);
         return view('points.create', ['teams_id' => request('teams_id')]);
     }
@@ -26,16 +27,20 @@ class PointsController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
-            'teams_id' => ['required'],
-            'point' => ['required', 'min:3'],
+            'teams_id' => ['required', 'exists:teams,id'],
+            'point' => ['required', 'integer'],
             'description' => ['required', 'min:3']
         ]);
 
-        Points::create([
+        $return = Points::create([
             'teams_id' => request('teams_id'),
             'point' => request('point'),
             'description' => request('description')
         ]);
+
+        if (!$return) {
+            throw new \Exception('Could not create the point');
+        }
 
         return redirect('/teams');
     }
@@ -49,21 +54,34 @@ class PointsController extends Controller
     {
         // authorize (On hold ...)
         request()->validate([
-            'point' => ['required', 'min:3'],
+            'point' => ['required', 'integer'],
             'description' => ['required', 'min:3']
         ]);
 
-        $point->update([
+        $return = $point->update([
             'point' => request('point'),
             'description' => request('description')
         ]);
+
+        if (!$return) {
+            throw new \Exception('Could not update the point');
+        }
 
         return redirect("/teams/{$point->teams_id}");
     }
 
     public function destroy(Points $points): RedirectResponse
     {
-        $points->delete();
+        try {
+            $return = $points->delete();
+
+            if (!$return) {
+                throw new \Exception('Could not delete the point');
+            }
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+            throw new \Exception($e->getMessage());
+        }
 
         return redirect("/teams");
     }
