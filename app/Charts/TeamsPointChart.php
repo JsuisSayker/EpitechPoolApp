@@ -24,7 +24,8 @@ class TeamsPointChart
         $this->chart = $this->chart->lineChart()
             ->setTitle('Teams Points')
             ->setSubtitle('Pool 2030 Promo')
-            ->setXAxis($points);
+            ->setXAxis($points)
+            ->setGrid();
         foreach ($teams as $team) {
             $team_point = $team->points()->get();
             $tmp_array = array(count($points), 0);

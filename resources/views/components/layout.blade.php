@@ -67,7 +67,7 @@
             </div>
         </header>
         <main class="">
-            <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8 m-4 bg-text">
+            <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8 m-4 bg-text rounded-lg">
                 {{ $slot }}
             </div>
         </main>
@@ -95,7 +95,6 @@
         /* Black w/opacity/see-through */
         font-weight: bold;
         position: relative;
-        z-index: 5;
         width: 100%;
         padding: 20px;
         text-align: center;
