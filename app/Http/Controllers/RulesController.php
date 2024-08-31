@@ -60,7 +60,7 @@ class RulesController extends Controller
             'description' => request('description')
         ]);
 
-        return redirect("/rules/{$rules->id}");
+        return redirect("/rules");
     }
 
     public function destroy(Rules $rules)
