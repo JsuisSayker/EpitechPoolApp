@@ -2,14 +2,43 @@
     <x-slot:heading>
         Collection Page
     </x-slot:heading>
-    <p>Collection Page</p>
+    <p class="dark:text-gray-300 text-2xl">commun</p>
+    <div class="flex flex-wrap">
+        @foreach (File::glob(public_path('images') . '/cards/commun/*') as $path)
+            <img id="{{ $path }}" class="h-70 w-60 ml-2 mt-2 hover:opacity-90"
+                src="{{ str_replace(public_path(), '', $path) }}" alt="{{ basename($path) }}">
+            <x-modal modal_tag="{{ $path }}"></x-modal>
+        @endforeach
+    </div>
 
-    <h2>commun</h2>
+    <br>
+    <h2 class="dark:text-gray-300 text-2xl">peu-commun</h2>
+    <div class="flex flex-wrap">
+        @foreach (File::glob(public_path('images') . '/cards/peu-commun/*') as $path)
+            <img id="{{ $path }}" class="h-70 w-60 ml-2 mt-2 hover:opacity-90"
+                src="{{ str_replace(public_path(), '', $path) }}" alt="{{ basename($path) }}">
+            <x-modal modal_tag="{{ $path }}"></x-modal>
+        @endforeach
+    </div>
 
-    <h2>peu-commun</h2>
+    <br>
+    <h4 class="dark:text-gray-300 text-2xl">rare</h4>
+    <div class="flex flex-wrap space-x-2">
+        @foreach (File::glob(public_path('images') . '/cards/rare/*') as $path)
+            <img id="{{ $path }}" class="h-70 w-60 ml-2 mt-2 hover:opacity-90"
+                src="{{ str_replace(public_path(), '', $path) }}" alt="{{ basename($path) }}">
+            <x-modal modal_tag="{{ $path }}"></x-modal>
+        @endforeach
+    </div>
 
-    <h4>rare</h4>
-
-    <h3>ultra-rare</h3>
+    <br>
+    <h3 class="dark:text-gray-300 text-2xl">ultra-rare</h3>
+    <div class="flex flex-wrap space-x-2">
+        @foreach (File::glob(public_path('images') . '/cards/ultra-rare/*') as $path)
+            <img id="{{ $path }}" class="h-70 w-60 ml-2 mt-2 hover:opacity-90"
+                src="{{ str_replace(public_path(), '', $path) }}" alt="{{ basename($path) }}">
+            <x-modal modal_tag="{{ $path }}"></x-modal>
+        @endforeach
+    </div>
 
 </x-layout>

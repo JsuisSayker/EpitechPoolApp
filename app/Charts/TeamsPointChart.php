@@ -24,12 +24,13 @@ class TeamsPointChart
         $this->chart = $this->chart->lineChart()
             ->setTitle('Teams Points')
             ->setSubtitle('Pool 2030 Promo')
-            ->setXAxis($points);
+            ->setXAxis($points)
+            ->setGrid();
         foreach ($teams as $team) {
             $team_point = $team->points()->get();
             $tmp_array = array(count($points), 0);
             $tmp_index = 0;
-            $last_value = $team_point[0]->point;
+            $last_value = $team_point->first()->point ?? 0;
             for ($i = 0; $i < count($points); $i++) {
                 if ($tmp_index < count($team_point) && $team_point[$tmp_index]->created_at == $points[$i]) {
                     $last_value = $team_point[$tmp_index]->point;

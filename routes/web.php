@@ -19,7 +19,7 @@ Route::patch('/teams/{team}', [TeamsController::class, 'update'])->middleware('a
 Route::delete('/teams/{team}', [TeamsController::class, 'destroy'])->middleware('auth');
 
 Route::get('/points', [PointsController::class, 'index']);
-Route::get('/points/create', [PointsController::class, 'create']);
+Route::get('/points/create', [PointsController::class, 'create'])->middleware('auth');
 Route::post('/points', [PointsController::class, 'store'])->middleware('auth');
 Route::get('/points/{point}/edit', [PointsController::class, 'edit'])->middleware('auth');
 Route::post('/points/{point}', [PointsController::class, 'update'])->middleware('auth');

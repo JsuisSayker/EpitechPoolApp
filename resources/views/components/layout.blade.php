@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html lang="en" class="h-full bg-gray-100">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $heading }}</title>
+    <link rel="icon" href="favicon.ico">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="h-full">
-    <div class="min-h-full bg-white shadow dark:bg-gray-500">
+<body class="h-full bg">
+    <div class="min-h-full">
         <nav class="bg-gray-800">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div class="flex h-16 items-center justify-between">
@@ -63,16 +64,41 @@
         <header class="bg-white shadow dark:bg-gray-700">
             <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 sm:flex sm:justify-between">
                 <h1 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-300"> {{ $heading }}</h1>
-                {{-- <x-button href="/jobs/create">Create Job</x-button> --}}
             </div>
         </header>
-        <main>
-            <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
+        <main class="">
+            <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8 m-4 bg-text rounded-lg">
                 {{ $slot }}
             </div>
         </main>
     </div>
 
 </body>
+
+<style>
+    .bg {
+        /* The image used */
+        background-image: url("/images/background.jpg");
+
+        /* Center and scale the image nicely */
+        background-position: center;
+        background-repeat: repeat;
+        background-size: cover;
+    }
+
+    /* Position text in the middle of the page/image */
+    .bg-text {
+        box-sizing: border-box;
+        background-color: rgb(0, 0, 0);
+        /* Fallback color */
+        background-color: rgba(0, 0, 0, 0.4);
+        /* Black w/opacity/see-through */
+        font-weight: bold;
+        position: relative;
+        width: 100%;
+        padding: 20px;
+        text-align: center;
+    }
+</style>
 
 </html>
