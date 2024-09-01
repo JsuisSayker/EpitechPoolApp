@@ -7,6 +7,45 @@
     <title>{{ $heading }}</title>
     <link rel="icon" href="favicon.ico">
     <script src="https://cdn.tailwindcss.com"></script>
+    {{-- <style>
+        #myDIV {
+            width: 100%;
+            padding: 0;
+            text-align: center;
+            background-color: lightblue;
+            margin-top: 20px;
+            overflow: hidden;
+            height: 0;
+            /* Start closed */
+            transition: height 0.5s ease-out, padding 0.5s ease-out;
+            /* Smooth transition */
+        }
+
+        /* Expanded state */
+        #myDIV.show {
+            height: 100px;
+            border-radius: 10px;
+            /* Final height */
+            padding: 50px 0;
+            /* Restore padding */
+        }
+
+        /* Arrow Button */
+        #toggleButton {
+            color: red;
+            font-size: 24px;
+            cursor: pointer;
+            background-color: transparent;
+            border: none;
+            outline: none;
+            transition: transform 0.3s ease;
+        }
+
+        /* Rotated arrow */
+        #toggleButton.rotate {
+            transform: rotate(180deg);
+        }
+    </style> --}}
 </head>
 
 <body class="h-full bg">
