@@ -34,7 +34,7 @@ class TeamsController extends Controller
     {
         return view('teams.show', [
             'team' => $team,
-            'points' => $team->points()->get()
+            'point' => $team->points()->get()
         ]);
     }
 
