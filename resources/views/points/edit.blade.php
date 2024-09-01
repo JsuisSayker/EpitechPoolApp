@@ -53,10 +53,10 @@
             <x-delete-button></x-delete-button>
 
             <div class="flex items-center gap-x-6">
-                <a href="/teams/{{ $point->teams_id }}" class="text-sm font-semibold leading-6 text-gray-900">Cancel</a>
+                <a href="/teams/{{ $point->teams_id }}" class="text-sm font-semibold leading-6">Cancel</a>
                 <div>
                     <button type="submit"
-                        class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Update</button>
+                        class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Update</button>
                 </div>
             </div>
         </div>
