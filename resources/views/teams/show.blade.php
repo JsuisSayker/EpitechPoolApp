@@ -33,14 +33,14 @@
             <div class="flex gap-3 mr-1">
                 @auth
                     <x-button href="/points/{{ $points[$i]->id }}/edit">Edit</x-button>
-                    <x-delete-button :form_name="'delete-points-form'"></x-delete-button>
+                    <x-delete-button form_name="delete-points-form-{{ $points[$i]->id }}"></x-delete-button>
+                    <form method="POST" action="/points/{{ $points[$i]->id }}" id='delete-points-form-{{ $points[$i]->id }}' class="hidden">
+                        @csrf
+                        @method('DELETE')
+                    </form>
                 @endauth
             </div>
         </x-text-widget>
-        <form method="POST" action="/points/{{ $points[$i]->id }}" id="delete-points-form" class="hidden">
-            @csrf
-            <!-- @method('DELETE') -->
-        </form>
     @endfor
 
 

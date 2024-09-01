@@ -83,6 +83,6 @@ class PointsController extends Controller
             throw new \Exception($e->getMessage());
         }
 
-        return redirect("/teams");
+        return redirect("/teams/{$points->teams_id}");
     }
 }
