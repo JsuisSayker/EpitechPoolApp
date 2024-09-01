@@ -7,7 +7,7 @@
         @csrf
         <div class="space-y-12">
             <div class="border-b border-gray-900/10 pb-12">
-                <h2 class="text-base font-semibold leading-7 text-gray-900 dark:text-gray-300">Create a New Point Balance
+                <h2 class="text-base font-semibold leading-7 ">Create a New Point Balance
                     modification</h2>
                 <p class="mt-1 text-sm leading-6 dark:text-gray-300">We just need a handful of details from you.</p>
 
@@ -16,11 +16,11 @@
                 <div class="mt-5 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                     <div class="sm:col-span-4">
                         <label for="point"
-                            class="block text-sm font-medium leading-6 text-gray-900 dark:text-gray-300">Point</label>
+                            class="block text-sm font-medium leading-6 ">Point</label>
                         <div class="mt-2">
                             <x-form-text-box>
                                 <input type="text" name="point" id="point"
-                                    class="block flex-1 border-0 bg-transparent py-1.5 px-3 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                                    class="block flex-1 border-0 bg-transparent py-1.5 px-3 focus:ring-0 sm:text-sm sm:leading-6"
                                     placeholder="(-)500" required>
                             </x-form-text-box>
                             @error('point')
@@ -31,11 +31,11 @@
 
                     <div class="sm:col-span-4">
                         <label for="description"
-                            class="block text-sm font-medium leading-6 text-gray-900 dark:text-gray-300">Description</label>
+                            class="block text-sm font-medium leading-6 ">Description</label>
                         <div class="mt-2">
                             <x-form-text-box>
                                 <input type="text" name="description" id="description"
-                                    class="block flex-1 border-0 bg-transparent py-1.5 px-3 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                                    class="block flex-1 border-0 bg-transparent py-1.5 px-3 focus:ring-0 sm:text-sm sm:leading-6"
                                     placeholder="A mangé en salle machine" required>
                             </x-form-text-box>
                             @error('description')

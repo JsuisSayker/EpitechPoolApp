@@ -7,7 +7,7 @@
         $totalBalance = $point->first()->point ?? 0;
         $actualBalance = array_sum($point->pluck('point')->toArray());
     @endphp
-    <div class="flex space-x-2 dark:text-gray-300">
+    <div class="flex space-x-2">
         <div class="grow flex space-x-4">
             <div>Default Balance Point : {{ $point->first()->point ?? 'N/A' }}</div>
 
@@ -18,7 +18,7 @@
             <x-button href="/teams/{{ $team->id }}/edit">Edit Team</x-button>
         @endauth
     </div>
-    <div class="dark:text-gray-300">Changelog</div>
+    <div>Changelog</div>
     @for ($i = 1; $i < count($point); $i += 1)
         @php
             $totalBalance += $point[$i]->point;
