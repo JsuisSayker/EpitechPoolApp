@@ -70,19 +70,14 @@ class PointsController extends Controller
         return redirect("/teams/{$point->teams_id}");
     }
 
-    public function destroy(Points $points): RedirectResponse
+    public function destroy(Points $point): RedirectResponse
     {
-        try {
-            $return = $points->delete();
+        $return = $point->delete();
 
-            if (!$return) {
-                throw new \Exception('Could not delete the point');
-            }
-        } catch (\Exception $e) {
-            Log::error($e->getMessage());
-            throw new \Exception($e->getMessage());
+        if (!$return) {
+            throw new \Exception('Could not delete the point');
         }
 
-        return redirect("/teams/{$points->teams_id}");
+        return redirect("/teams/{$point->teams_id}");
     }
 }

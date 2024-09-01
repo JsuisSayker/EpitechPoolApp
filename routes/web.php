@@ -22,7 +22,7 @@ Route::get('/points/create', [PointsController::class, 'create'])->middleware('a
 Route::post('/points', [PointsController::class, 'store'])->middleware('auth');
 Route::get('/points/{point}/edit', [PointsController::class, 'edit'])->middleware('auth');
 Route::post('/points/{point}', [PointsController::class, 'update'])->middleware('auth');
-Route::delete('/points/{points}', [PointsController::class, 'destroy'])->middleware('auth');
+Route::delete('/points/{point}', [PointsController::class, 'destroy'])->middleware('auth');
 
 // Route::resource('points', PointsController::class);
 // Route::resource('rules', RulesController::class);

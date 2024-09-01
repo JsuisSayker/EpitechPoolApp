@@ -105,8 +105,8 @@
                 <h1 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-300"> {{ $heading }}</h1>
             </div>
         </header>
-        <main class="">
-            <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8 m-4 bg-text rounded-lg">
+        <main class="text-gray-900 placeholder:text-gray-500 dark:text-gray-300 dark:placeholder:text-gray-500">
+            <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8 m-4 rounded-lg bg-text">
                 {{ $slot }}
             </div>
         </main>
@@ -125,12 +125,22 @@
         background-size: cover;
     }
 
+    :where(.bg-text) {
+        --background-color: rgba(255, 255, 255, 0.6);
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :where(.bg-text) {
+            --background-color: rgba(0, 0, 0, 0.4);
+        }
+    }
+
     /* Position text in the middle of the page/image */
     .bg-text {
         box-sizing: border-box;
-        background-color: rgb(0, 0, 0);
+
         /* Fallback color */
-        background-color: rgba(0, 0, 0, 0.4);
+        background-color: var(--background-color);
         /* Black w/opacity/see-through */
         font-weight: bold;
         position: relative;
