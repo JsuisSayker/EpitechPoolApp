@@ -5,7 +5,7 @@
         width: 100%;
         padding: 0;
         text-align: center;
-        background-color: lightblue;
+        background-color: rgb(31 41 55);
         margin-top: 20px;
         overflow: hidden;
         height: 0;
@@ -19,7 +19,7 @@
     }
 
     #toggleButton-{{ $rule_id }} {
-        color: red;
+        color: white;
         font-size: 24px;
         cursor: pointer;
         background-color: transparent;
@@ -33,7 +33,7 @@
     }
 </style>
 
-<button id="toggleButton-{{$rule_id}}" class="text-red-500 text-2xl cursor-pointer bg-transparent border-none outline-none transition-transform duration-300 ease" onclick="myFunction({{$rule_id}})">&#9660;</button>
+<button id="toggleButton-{{$rule_id}}" class="text-white-500 text-2xl cursor-pointer bg-transparent border-none outline-none transition-transform duration-300 ease" onclick="myFunction({{$rule_id}})">&#9660;</button>
 
 <script>
     function myFunction(rule_id) {
