@@ -7,6 +7,8 @@ use App\Models\Points;
 use ArielMejiaDev\LarapexCharts\LarapexChart;
 use PhpParser\Node\Expr\Cast\Array_;
 
+use function PHPSTORM_META\map;
+
 class TeamsPointChart
 {
     protected $chart;
@@ -20,6 +22,9 @@ class TeamsPointChart
     {
         $teams = Teams::all();
         $point = Points::pluck("created_at")->toArray();
+        for ($i = 0; $i < count($point); $i++) {
+            $point[$i] = date('m/d-h:m:s', strtotime($point[$i]));
+        }
 
         $this->chart = $this->chart->lineChart()
             ->setTitle('Teams Points')
@@ -32,7 +37,7 @@ class TeamsPointChart
             $tmp_index = 0;
             $last_value = $team_point->first()->point ?? 0;
             for ($i = 0; $i < count($point); $i++) {
-                if ($tmp_index < count($team_point) && $team_point[$tmp_index]->created_at == $point[$i]) {
+                if ($tmp_index < count($team_point) && date('m/d-h:m:s', strtotime($team_point[$tmp_index]->created_at)) == $point[$i]) {
                     $last_value = $team_point[$tmp_index]->point;
                     $tmp_index++;
                 }
