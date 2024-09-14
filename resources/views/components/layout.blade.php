@@ -19,22 +19,22 @@
     </div>
     <div class="min-h-full">
         <nav class="bg-gray-800">
-            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div class="flex h-16 items-center justify-between">
-                    <div class="flex-shrink-0">
-                        <a href="https://intra.epitech.eu/">
-                            <img class="h-8 w-8" src="/images/logo/epitech.svg" alt="Main Logo">
-                        </a>
-                    </div>
-                    <div class="hidden md:block col-auto space-x-4">
-                        <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                        <x-nav-link href="/" :active="request()->is('/')">Home</x-nav-link>
-                        <x-nav-link href="/teams" :active="request()->is('teams')">Teams</x-nav-link>
-                        <x-nav-link href="/points" :active="request()->is('points')">Points</x-nav-link>
-                        <x-nav-link href="/collection" :active="request()->is('collection')">Collection</x-nav-link>
-                        <x-nav-link href="/rules" :active="request()->is('rules')">Rules</x-nav-link>
-                    </div>
-                    <div class="hidden md:block">
+            <div class="hidden md:block">
+                <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                    <div class=" flex h-16 items-center justify-between">
+                        <div class="flex-shrink-0">
+                            <a href="https://intra.epitech.eu/">
+                                <img class="h-8 w-8" src="/images/logo/epitech.svg" alt="Main Logo">
+                            </a>
+                        </div>
+                        <div class="col-auto space-x-4">
+                            <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                            <x-nav-link href="/" :active="request()->is('/')">Home</x-nav-link>
+                            <x-nav-link href="/teams" :active="request()->is('teams')">Teams</x-nav-link>
+                            <x-nav-link href="/points" :active="request()->is('points')">Points</x-nav-link>
+                            <x-nav-link href="/collection" :active="request()->is('collection')">Collection</x-nav-link>
+                            <x-nav-link href="/rules" :active="request()->is('rules')">Rules</x-nav-link>
+                        </div>
                         @guest
                             <x-nav-link href="/login" :active="request()->is('login')">Log In</x-nav-link>
                         @endguest
@@ -51,26 +51,49 @@
 
             <!-- Mobile menu, show/hide based on menu state. -->
             <div class="md:hidden" id="mobile-menu">
-                <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
-                    <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                    {{-- TODO --}}
-                    <x-mobile-nav-link href="/" :active="request()->is('/')">Home</x-mobile-nav-link>
-                    <x-mobile-nav-link href="/teams" :active="request()->is('teams')">Teams</x-mobile-nav-link>
-                    <x-mobile-nav-link href="/points" :active="request()->is('points')">Points</x-mobile-nav-link>
-                    <x-mobile-nav-link href="/collection" :active="request()->is('collection')">Collection</x-mobile-nav-link>
-                    <x-mobile-nav-link href="/rules" :active="request()->is('rules')">Rules</x-mobile-nav-link>
+                <script>
+                    function MobileNavBarFunction() {
+                        var x = document.getElementById("Mobile-NavBar");
+                        var tkt = document.getElementById("Button-Mobile-NavBar");
+                        if (x.style.display === "none") {
+                            x.style.display = "block";
+                            tkt.lastChild.data = "Close";
+                        } else {
+                            x.style.display = "none";
+                            tkt.lastChild.data = "NavBar";
+                        }
+                    }
+                </script>
+                <div class="flex p-3">
+                    <div class="flex-shrink-0">
+                        <a href="https://intra.epitech.eu/">
+                            <img class="h-8 w-8" src="/images/logo/epitech.svg" alt="Main Logo">
+                        </a>
+                    </div>
+                    <div class="grow"></div>
+                    <button id="Button-Mobile-NavBar" class="text-white" onclick="MobileNavBarFunction()">NavBar</button>
                 </div>
-                <div class="border-t border-gray-700 pb-3 pt-4">
-                    @guest
-                    <x-mobile-nav-link href="/login" :active="request()->is('login')">Login</x-mobile-nav-link>
-                    @endguest
+                <div id="Mobile-NavBar" style="display: none">
+                    <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
+                        <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                        <x-mobile-nav-link href="/" :active="request()->is('/')">Home</x-mobile-nav-link>
+                        <x-mobile-nav-link href="/teams" :active="request()->is('teams')">Teams</x-mobile-nav-link>
+                        <x-mobile-nav-link href="/points" :active="request()->is('points')">Points</x-mobile-nav-link>
+                        <x-mobile-nav-link href="/collection" :active="request()->is('collection')">Collection</x-mobile-nav-link>
+                        <x-mobile-nav-link href="/rules" :active="request()->is('rules')">Rules</x-mobile-nav-link>
+                    </div>
+                    <div class="border-t border-gray-700 pb-3 pt-4">
+                        @guest
+                            <x-mobile-nav-link href="/login" :active="request()->is('login')">Login</x-mobile-nav-link>
+                        @endguest
 
-                    @auth
-                        <form method="POST" action="/logout">
-                            @csrf
-                            <x-form-button class="justify-between">Log Out</x-form-button>
-                        </form>
-                    @endauth
+                        @auth
+                            <form method="POST" action="/logout">
+                                @csrf
+                                <x-form-button class="justify-between">Log Out</x-form-button>
+                            </form>
+                        @endauth
+                    </div>
                 </div>
             </div>
         </nav>
