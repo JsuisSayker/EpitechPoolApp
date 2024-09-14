@@ -35,10 +35,7 @@
             <x-delete-button form_name="delete-form"></x-delete-button>
             <div class="flex items-center gap-x-6">
                 <a href="/rules" class="text-sm font-semibold leading-6">Cancel</a>
-                <div>
-                    <button type="submit"
-                        class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Update</button>
-                </div>
+                <x-form-button>Update</x-form-button>
             </div>
         </div>
     </form>
