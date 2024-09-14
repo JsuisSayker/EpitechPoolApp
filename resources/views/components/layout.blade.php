@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html class="h-full">
 <html lang="en">
 
 <head>
@@ -26,7 +26,7 @@
                             <img class="h-8 w-8" src="/images/logo/epitech.svg" alt="Main Logo">
                         </a>
                     </div>
-                    <div class="col-auto space-x-4">
+                    <div class="hidden md:block col-auto space-x-4">
                         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
                         <x-nav-link href="/" :active="request()->is('/')">Home</x-nav-link>
                         <x-nav-link href="/teams" :active="request()->is('teams')">Teams</x-nav-link>
@@ -37,18 +37,16 @@
                         <x-nav-link href="/contact" :active="request()->is('contact')">Contact</x-nav-link> --}}
                     </div>
                     <div class="hidden md:block">
-                        <div class="ml-4 flex items-center md:ml-6">
-                            @guest
-                                <x-nav-link href="/login" :active="request()->is('/login')">Log In</x-nav-link>
-                            @endguest
+                        @guest
+                            <x-nav-link href="/login">Log In</x-nav-link>
+                        @endguest
 
-                            @auth
-                                <form method="POST" action="/logout">
-                                    @csrf
-                                    <x-form-button>Log Out</x-form-button>
-                                </form>
-                            @endauth
-                        </div>
+                        @auth
+                            <form method="POST" action="/logout" class="inline-block align-bottom">
+                                @csrf
+                                <x-form-button>Log Out</x-form-button>
+                            </form>
+                        @endauth
                     </div>
                 </div>
             </div>
@@ -60,10 +58,14 @@
                     {{-- TODO --}}
                     <a href="/" class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white"
                         aria-current="page">Home</a>
-                    <a href="/about"
-                        class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">About</a>
-                    <a href="/contact"
-                        class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Contact</a>
+                    <a href="/teams"
+                        class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Teams</a>
+                    <a href="/points"
+                        class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Points</a>
+                    <a href="/collection"
+                        class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Collection</a>
+                    <a href="/rules"
+                        class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Rules</a>
                 </div>
             </div>
         </nav>
