@@ -18,8 +18,44 @@
             <x-button href="/teams/{{ $team->id }}/edit">Edit Team</x-button>
         @endauth
     </div>
-    <div>Changelog</div>
-    @for ($i = 1; $i < count($point); $i += 1)
+    <div class="p-3">Changelog</div>
+    <table class="w-full table-auto text-white text-left rounded-xl overflow-hidden bg-white shadow-[0px_14px_34px_0px_rgba(0,0,0,0.08)] ring-1 ring-white/[0.05] transition duration-300 focus:outline-none focus-visible:ring-[#FF2D20] dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300 dark:focus:border-blue-700 dark:active:bg-gray-700 dark:active:text-gray-300">
+        <thead >
+            <th class="hidden sm:table-cell p-3 border-b">total balance</th>
+            <th class="hidden sm:table-cell p-3 border-b">delta points</th>
+            <th class="hidden sm:table-cell p-3 border-b">description</th>
+            <th class="hidden sm:table-cell p-3 border-b">date</th>
+            @auth
+                <th class="hidden sm:table-cell p-3 border-b">Action</th>
+            @endauth
+        </thead>
+        <tbody>
+            @for ($i = 1; $i < count($point); $i += 1)
+                <tr
+                    class="even:bg-gray-100 dark:even:bg-gray-700">
+                    @php
+                        $totalBalance += $point[$i]->point;
+                    @endphp
+                    <td class="flex sm:table-cell p-3 break-words">{{ $totalBalance }}</td>
+                    <td class="flex sm:table-cell p-3 break-words">{{ $point[$i]->point }}</td>
+                    <td class="flex sm:table-cell p-3 break-words">{{ $point[$i]->description }}</td>
+                    <td class="flex sm:table-cell p-3 break-words">{{ $point[$i]->created_at }}</td>
+                    @auth
+                        <td class="flex gap-3 p-3">
+                            <x-button href="/points/{{ $point[$i]->id }}/edit">Edit</x-button>
+                            <x-delete-button form_name="delete-points-form-{{ $point[$i]->id }}"></x-delete-button>
+                            <form method="POST" action="/points/{{ $point[$i]->id }}"
+                                id='delete-points-form-{{ $point[$i]->id }}' class="hidden">
+                                @csrf
+                                @method('DELETE')
+                            </form>
+                        </td>
+                    @endauth
+                </tr>
+            @endfor
+        </tbody>
+    </table>
+    {{-- @for ($i = 1; $i < count($point); $i += 1)
         @php
             $totalBalance += $point[$i]->point;
         @endphp
@@ -34,14 +70,15 @@
                 @auth
                     <x-button href="/points/{{ $point[$i]->id }}/edit">Edit</x-button>
                     <x-delete-button form_name="delete-points-form-{{ $point[$i]->id }}"></x-delete-button>
-                    <form method="POST" action="/points/{{ $point[$i]->id }}" id='delete-points-form-{{ $point[$i]->id }}' class="hidden">
+                    <form method="POST" action="/points/{{ $point[$i]->id }}"
+                        id='delete-points-form-{{ $point[$i]->id }}' class="hidden">
                         @csrf
                         @method('DELETE')
                     </form>
                 @endauth
             </div>
         </x-text-widget>
-    @endfor
+    @endfor --}}
 
 
 </x-layout>
