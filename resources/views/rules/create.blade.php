@@ -15,15 +15,15 @@
                         <x-form-label for="title">Title</x-form-label>
                         <div class="mt-2 text-left">
                             <x-form-input name="title" id="title" type="text" :value="old('title')"
-                                required />
+                                placeholder="règle spécial" required />
                             <x-form-error name="title" />
                         </div>
                     </x-form-field>
                     <x-form-field>
                         <x-form-label for="description">Description</x-form-label>
                         <div class="mt-2 text-left">
-                            <x-form-input name="description" id="description" type="text"
-                                :value="old('description')" required />
+                            <x-form-input name="description" id="description" type="text" :value="old('description')"
+                                placeholder="description détailé" required />
                             <x-form-error name="description" />
                         </div>
                     </x-form-field>

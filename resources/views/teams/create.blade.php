@@ -14,7 +14,8 @@
                     <x-form-field>
                         <x-form-label for="name">Name</x-form-label>
                         <div class="mt-2 text-left">
-                            <x-form-input name="name" id="name" type="text" :value="old('name')" required />
+                            <x-form-input name="name" id="name" type="text" :value="old('name')"
+                                placeholder="la meilleure équipe" required />
                             <x-form-error name="name" />
                         </div>
                     </x-form-field>

@@ -19,7 +19,8 @@
                     <x-form-field>
                         <x-form-label for="point">Point</x-form-label>
                         <div class="mt-2 text-left">
-                            <x-form-input name="point" id="point" type="text" :value="old('point')" required />
+                            <x-form-input name="point" id="point" type="text" :value="old('point')"
+                                placeholder="[-]543" required />
                             <x-form-error name="point" />
                         </div>
                     </x-form-field>
