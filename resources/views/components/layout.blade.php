@@ -9,14 +9,9 @@
     <link rel="icon" href="favicon.ico">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-
+<!-- Tom MENDY github.com/Tom-Mendy -->
+<!-- Killian TROUVÉ github.com/JsuisSayker -->
 <body class="h-full bg">
-    <div class="hidden">
-        Tom MENDY github.com/Tom-Mendy
-    </div>
-    <div class="hidden">
-        Killian TROUVÉ github.com/JsuisSayker
-    </div>
     <div class="min-h-full">
         <nav class="bg-gray-800">
             <div class="hidden md:block">
@@ -90,7 +85,7 @@
                         @auth
                             <form method="POST" action="/logout">
                                 @csrf
-                                <x-form-button class="justify-between">Log Out</x-form-button>
+                                <x-form-button>Log Out</x-form-button>
                             </form>
                         @endauth
                     </div>

@@ -42,7 +42,7 @@
             <a href="/teams/{{ $teams_id }}" class="text-sm font-semibold leading-6 ">
                 Cancel
             </a>
-            <x-form-button>Save</x-form-button>
+            <x-form-button>Create</x-form-button>
         </div>
     </form>
 </x-layout>
