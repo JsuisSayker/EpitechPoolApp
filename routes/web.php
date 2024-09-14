@@ -6,8 +6,17 @@ use App\Http\Controllers\RulesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminSessionController;
 use App\Http\Controllers\FileUploadController;
+use App\Http\Controllers\NotificationsController;
 
 Route::view('/', 'home');
+Route::get('/notifications', [NotificationsController::class, 'index']);
+// Route::get('/notifications/create', [NotificationsController::class, 'create'])->middleware('auth');
+// Route::get('/notifications/{notification}', [NotificationsController::class, 'show']);
+Route::post('/notifications', [NotificationsController::class, 'store'])->middleware('auth');
+// Route::get('/notifications/{notification}/edit', [NotificationsController::class, 'edit'])->middleware('auth');
+Route::patch('/notifications/{notification}', [NotificationsController::class, 'update'])->middleware('auth');
+// Route::delete('/notifications/{notification}', [NotificationsController::class, 'destroy'])->middleware('auth');
+
 // Route::resource('teams', TeamsController::class);
 Route::get('/teams', [TeamsController::class, 'index']);
 Route::get('/teams/create', [TeamsController::class, 'create'])->middleware('auth');
