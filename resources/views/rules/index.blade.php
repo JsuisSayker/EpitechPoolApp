@@ -17,7 +17,7 @@
         <x-text-widget onclick="myFunction({{$rule->id}})">
             <x-arrow rule_id="{{ $rule->id }}"></x-arrow>
             <div class="flex grow my-auto gap-4 ml-1">
-                {{ $rule->description }}
+                {{ $rule->title }}
             </div>
 
             <div class="flex gap-3 mr-1">
@@ -34,8 +34,8 @@
 
         </x-text-widget>
         <div id="myDIV-{{ $rule->id }}"
-            class="w-full p-0 text-center bg-blue-200 mt-5 overflow-hidden h-0 transition-[height,padding] duration-500 ease-out">
-            This is my DIV.
+            class="w-full p-0 text-center bg-gray-100 mt-5 overflow-hidden h-0 transition-[height,padding] duration-500 ease-out">
+            {{ $rule->description }}
         </div>
     @endforeach
 </x-layout>

@@ -32,9 +32,11 @@ class RulesController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'title' => ['required', 'min:3'],
             'description' => ['required', 'min:3'],
         ]);
         Rules::create([
+            'title' => request('title'),
             'description' => request('description')
         ]);
 
@@ -50,11 +52,13 @@ class RulesController extends Controller
     {
         // authorize (On hold ...)
         request()->validate([
+            'title' => ['required', 'min:3'],
             'description' => ['required', 'min:3']
         ]);
 
 
         $rules->update([
+            'title' => request('title'),
             'description' => request('description')
         ]);
 

@@ -10,5 +10,5 @@ class Rules extends Model
     use HasFactory;
 
     protected $table = 'rules';
-    protected $fillable = ['description'];
+    protected $fillable = ['title', 'description'];
 }
