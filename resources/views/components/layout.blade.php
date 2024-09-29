@@ -11,9 +11,10 @@
 </head>
 <!-- Tom MENDY github.com/Tom-Mendy -->
 <!-- Killian TROUVÉ github.com/JsuisSayker -->
-<body class="h-full bg">
-    <div class="min-h-full">
-        <nav class="bg-gray-800">
+
+<body class="min-h-full h-full bg">
+    <div>
+        <nav class="bg-gray-800 ">
             <div class="hidden md:block">
                 <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <div class=" flex h-16 items-center justify-between">
@@ -24,7 +25,7 @@
                         </div>
                         <div class="col-auto space-x-4">
                             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                            <x-nav-link href="/" :active="request()->is('/')">Home</x-nav-link>
+                            {{-- <x-nav-link href="/" :active="request()->is('/')">Home</x-nav-link> --}}
                             <x-nav-link href="/teams" :active="request()->is('teams')">Teams</x-nav-link>
                             <x-nav-link href="/points" :active="request()->is('points')">Points</x-nav-link>
                             <x-nav-link href="/collection" :active="request()->is('collection')">Collection</x-nav-link>
@@ -66,12 +67,13 @@
                         </a>
                     </div>
                     <div class="grow"></div>
-                    <button id="Button-Mobile-NavBar" class="text-white" onclick="MobileNavBarFunction()">NavBar</button>
+                    <button id="Button-Mobile-NavBar" class="text-white"
+                        onclick="MobileNavBarFunction()">NavBar</button>
                 </div>
                 <div id="Mobile-NavBar" style="display: none">
                     <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
                         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                        <x-mobile-nav-link href="/" :active="request()->is('/')">Home</x-mobile-nav-link>
+                        {{-- <x-mobile-nav-link href="/" :active="request()->is('/')">Home</x-mobile-nav-link> --}}
                         <x-mobile-nav-link href="/teams" :active="request()->is('teams')">Teams</x-mobile-nav-link>
                         <x-mobile-nav-link href="/points" :active="request()->is('points')">Points</x-mobile-nav-link>
                         <x-mobile-nav-link href="/collection" :active="request()->is('collection')">Collection</x-mobile-nav-link>
@@ -110,12 +112,13 @@
 <style>
     .bg {
         /* The image used */
-        background-image: url("/images/background.jpg");
+        background-image: url("/images/background.png");
 
         /* Center and scale the image nicely */
         background-position: center;
-        background-repeat: repeat;
-        background-size: cover;
+        /* background-repeat: repeat;
+        background-size: cover; */
+        height: 100%;
     }
 
     :where(.bg-text) {

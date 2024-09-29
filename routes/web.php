@@ -7,7 +7,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminSessionController;
 use App\Http\Controllers\FileUploadController;
 
-Route::view('/', 'home');
+Route::get('/', function () {
+    return redirect('/teams');
+});
 // Route::resource('teams', TeamsController::class);
 Route::get('/teams', [TeamsController::class, 'index']);
 Route::get('/teams/create', [TeamsController::class, 'create'])->middleware('auth');
