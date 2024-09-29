@@ -12,8 +12,8 @@
 <!-- Tom MENDY github.com/Tom-Mendy -->
 <!-- Killian TROUVÉ github.com/JsuisSayker -->
 
-<body class="min-h-full h-full bg">
-    <div>
+<body class="h-full">
+    <div class="min-h-full bg-cover bg-center" style="background-image: url('/images/background.png');">
         <nav class="bg-gray-800 ">
             <div class="hidden md:block">
                 <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -110,17 +110,6 @@
 </body>
 
 <style>
-    .bg {
-        /* The image used */
-        background-image: url("/images/background.png");
-
-        /* Center and scale the image nicely */
-        background-position: center;
-        /* background-repeat: repeat;
-        background-size: cover; */
-        height: 100%;
-    }
-
     :where(.bg-text) {
         --background-color: rgba(255, 255, 255, 0.6);
     }
