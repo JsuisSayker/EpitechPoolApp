@@ -1,18 +1,28 @@
 @props(['rule_id'])
 
 <style>
-    #myDIV-{{$rule_id}} {
+    :where(#myDIV-{{ $rule_id }}) {
+        --backgzround-color: rgb(255, 255, 255);
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :where(#myDIV-{{ $rule_id }}) {
+            --background-color: rgb(31 41 55);
+        }
+    }
+
+    #myDIV-{{ $rule_id }} {
         width: 100%;
         padding: 0;
         text-align: center;
-        background-color: rgb(31 41 55);
+        background-color: --background-color;
         margin-top: 20px;
         overflow: hidden;
         height: 0;
         transition: height 0.5s ease-out, padding 0.5s ease-out;
     }
 
-    #myDIV-{{$rule_id}}.show {
+    #myDIV-{{ $rule_id }}.show {
         height: 100px;
         border-radius: 10px;
         padding: 50px 0;
@@ -33,7 +43,9 @@
     }
 </style>
 
-<button id="toggleButton-{{$rule_id}}" class="text-white-500 text-2xl cursor-pointer bg-transparent border-none outline-none transition-transform duration-300 ease" onclick="myFunction({{$rule_id}})">&#9660;</button>
+<button id="toggleButton-{{ $rule_id }}"
+    class="text-white-500 text-2xl cursor-pointer bg-transparent border-none outline-none transition-transform duration-300 ease"
+    onclick="myFunction({{ $rule_id }})">&#9660;</button>
 
 <script>
     function myFunction(rule_id) {

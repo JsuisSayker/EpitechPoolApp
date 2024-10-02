@@ -52,6 +52,7 @@ RUN php artisan key:generate
 # Run migrations in production with force
 RUN php artisan migrate --force --seed
 
+EXPOSE 80
 
 # Run app
-ENTRYPOINT [ "php", "artisan", "serve", "--host=0.0.0.0" ]
+ENTRYPOINT [ "php", "artisan", "serve", "--host=0.0.0.0", "--port=80" ]

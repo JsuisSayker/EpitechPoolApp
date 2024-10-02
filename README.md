@@ -33,6 +33,20 @@ APP_DEBUG=false
 
 ## docker
 
+### run compose
+
 ```sh
 docker compose up --build -d
+```
+
+### build
+
+```sh
+docker build -t tommendy/epitechpoolapp --build-arg ADMIN_EMAIL=[EMAIL] --build-arg ADMIN_PASSWORD=[PASSWORD] .
+```
+
+### run container
+
+```sh
+docker run -p '8000:80' tommendyepitechpoolapp
 ```
